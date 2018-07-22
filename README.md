@@ -9,4 +9,12 @@ non-linear, dispersive, anisotropic and time varying media.
 
 This code demonstrates how to write a concurrent FDTD using modern C++ features.
 
+To compile and run:
+
+$ cd build
+$ cmake ..
+$ make
+$ ./fdtd1d
+
+
 
