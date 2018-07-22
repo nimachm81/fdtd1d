@@ -1,6 +1,6 @@
 # fdtd1d
 
-A parallel one dimensional FDTD code for Maxwell equations. 
+## A parallel one dimensional FDTD code for Maxwell equations. 
 
 Finite difference time domain (FDTD) is one of the most efficient numerical
 techniques for solving electromagnetic problems. It can handle a vast number
@@ -11,10 +11,12 @@ This code demonstrates how to write a concurrent FDTD using modern C++ features.
 
 To compile and run:
 
-$ cd build \n
-$ cmake .. \n
-$ make     \n
-$ ./fdtd1d \n
+'''
+$ cd build 
+$ cmake .. 
+$ make     
+$ ./fdtd1d 
+'''
 
 
 
