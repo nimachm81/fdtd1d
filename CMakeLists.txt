@@ -1,13 +1,18 @@
-cmake_minimum_required(VERSION 2.8.9)
-project(FDTD1D)
+cmake_minimum_required(VERSION 3.1.0)
+project (fdtd1d)
 
-#Bring the headers, such as Student.h into the project
+#set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++14")
+set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${OpenMP_CXX_FLAGS}")
+
 include_directories(include)
 
-#Can manually add the sources using the set command as follows:
-#set(SOURCES src/mainapp.cpp src/Student.cpp)
+set (PROJECT_LINK_LIBS "${PROJECT_LINK_LIBS} " )
+link_directories(/usr/lib)
 
-#However, the file(GLOB...) allows for wildcard additions:
-file(GLOB SOURCES "src/*.cpp")
-
+file(GLOB SOURCES "src/*.cc")
 add_executable(fdtd1d ${SOURCES})
+
+target_link_libraries(fdtd1d -lpthread -fopenmp)
+
+
