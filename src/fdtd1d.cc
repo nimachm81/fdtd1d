@@ -6,11 +6,9 @@
 
 namespace fdtd1d {
 
-FDTD1D::FDTD1D() : num_of_updated_threads_(0),
-                   ind_t_(0), num_threads_(1), 
-                   output_file_name_("output.csv") // default output file name
-{
-}
+FDTD1D::FDTD1D() 
+    : num_of_updated_threads_(0), ind_t_(0), num_threads_(1), 
+      output_file_name_("output.csv" /* default output file name */) {} 
 
 void FDTD1D::SetXAxisRangeAndGridSpacing(const RealNumber x0, 
                                          const RealNumber x1, 
