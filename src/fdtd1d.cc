@@ -161,18 +161,18 @@ void FDTD1D::UpdateMagneticHNodes(const int thread_index,
 // he process is repeated until the final time step is passed.
 void FDTD1D::UpdateFieldsCuncurrently(const int thread_index) {
   UpdateState nextState = UpdateState::kUpdateH;
-  for (IntNumber i = 0; i < num_t_; ++i){
+  for (IntNumber i = 0; i < num_t_; ++i) {
     if (thread_index == 0) {
       ind_t_ = i;
     }
     
     nextState = UpdateState::kUpdateH;
-    while(update_state_ != UpdateState::kUpdateE){
+    while(update_state_ != UpdateState::kUpdateE) {
     }
     FDTD1D::UpdateElectricENodes(thread_index, nextState);
 
     nextState = UpdateState::kUpdateE;
-    while(update_state_ != UpdateState::kUpdateH){
+    while(update_state_ != UpdateState::kUpdateH) {
     }
     FDTD1D::UpdateMagneticHNodes(thread_index, nextState);
   }
@@ -182,18 +182,18 @@ void FDTD1D::UpdateFieldsCuncurrently(const int thread_index) {
 // loop the fields are written to the output file.
 void FDTD1D::UpdateFieldsAndWriteToFileCuncurrently(const int thread_index) {
   UpdateState nextState = UpdateState::kUpdateH;
-  for (IntNumber i = 0; i < num_t_; ++i){
+  for (IntNumber i = 0; i < num_t_; ++i) {
     if (thread_index == 0) {
       ind_t_ = i;
     }
 
     nextState = UpdateState::kUpdateH;
-    while(update_state_ != UpdateState::kUpdateE){
+    while(update_state_ != UpdateState::kUpdateE) {
     }
     FDTD1D::UpdateElectricENodes(thread_index, nextState);
 
     nextState = UpdateState::kUpdateOutputFile;
-    while(update_state_ != UpdateState::kUpdateH){
+    while(update_state_ != UpdateState::kUpdateH) {
     }
     FDTD1D::UpdateMagneticHNodes(thread_index, nextState);
     
@@ -221,8 +221,9 @@ void FDTD1D::CreateThreadsAndRun() {
         std::thread(&FDTD1D::UpdateFieldsAndWriteToFileCuncurrently, this, i));
     }
   
-  for (int i = 0; i < num_threads_; ++i)
+  for (int i = 0; i < num_threads_; ++i) {
     threads[i].join();
+  }
 }
 
 void FDTD1D::PrintEFieldValues() {
