@@ -111,7 +111,8 @@ class FDTD1D {
   std::unique_ptr<IntNumber[]> thread_data_chunk_bounds_ = nullptr;
 
   // counts the number of thread that completed their job at a given states
-  std::atomic<int> num_of_updated_threads_;
+  std::atomic<int> num_of_e_updated_threads_;
+  std::atomic<int> num_of_h_updated_threads_;
   
   // write the output electric field to the output file after each time step
   // the saved values can then be used to visualize the fields.

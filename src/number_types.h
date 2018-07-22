@@ -17,7 +17,7 @@
 
 namespace fdtd1d {
 
-using RealNumber = float;
+using RealNumber = double;
 using IntNumber = std::int64_t;
 
 }  // namespace fdtd1d

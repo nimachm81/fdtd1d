@@ -7,7 +7,7 @@
 #include "fdtd1d.h"
 
 
-int main() {
+int main(int argc, char* argv[]) {
   auto t_start = std::chrono::steady_clock::now();
 
   // x axis grid parameters
@@ -19,6 +19,12 @@ int main() {
   fdtd1d::RealNumber stabilityFactor(0.99); 
   // number of threads
   int num_threads(1);
+  if (argc == 2) {
+    num_threads = std::stoi(argv[1]);
+    if (num_threads < 1) {
+      num_threads = 1;
+    }
+  }
   
   fdtd1d::FDTD1D fdtd;
   fdtd.SetXAxisRangeAndGridSpacing(x0, x1, dx);

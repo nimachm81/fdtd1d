@@ -15,14 +15,9 @@ To compile and run:
 $ cd build 
 $ cmake .. 
 $ make     
-$ ./fdtd1d 
+$ ./fdtd1d NUMBER_OF_THREADS
 ```
 
-To set the number of threads, change the following line in main.cc:
-
-``` C++
-  int num_threads(1);
-```
 
 To record the fields and visualize the output modify main.cc as follows, 
 

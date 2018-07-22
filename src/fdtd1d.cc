@@ -1,13 +1,16 @@
 // Copyright 2018 Nima Chamanara.  All Rights Reserved.
 // Use of this source code is governed by the GNU General Public License v3.0.
 
+//#define NDEBUG
+#include <assert.h>
 
 #include "fdtd1d.h"
 
 namespace fdtd1d {
 
 FDTD1D::FDTD1D() 
-    : num_of_updated_threads_(0), ind_t_(0), num_threads_(1), 
+    : num_of_e_updated_threads_(0), num_of_h_updated_threads_(0),
+      ind_t_(0), num_threads_(1), 
       output_file_name_("output.csv" /* default output file name */) {} 
 
 void FDTD1D::SetXAxisRangeAndGridSpacing(const RealNumber x0, 
@@ -109,12 +112,14 @@ void FDTD1D::UpdateElectricENodes(const int thread_index,
     }
   }
 
-  // job done --> increase num_of_updated_threads_
-  num_of_updated_threads_ += 1;
+  // job done --> increase num_of_e_updated_threads_
+  num_of_e_updated_threads_ += 1;
   
   // if all the threads have completed their job set the state to the next state
-  if (num_of_updated_threads_ == num_threads_) {
-    num_of_updated_threads_ = 0;
+  if (num_of_e_updated_threads_ >= num_threads_) {
+    assert(num_of_e_updated_threads_ == num_threads_);
+    //std::cout << num_of_e_updated_threads_ << std::endl;
+    num_of_e_updated_threads_ = 0;
     update_state_ = nextState;
   }
 }
@@ -139,12 +144,14 @@ void FDTD1D::UpdateMagneticHNodes(const int thread_index,
                              dt_dx_mu0;
   }
   
-  // job done --> increase num_of_updated_threads_
-  num_of_updated_threads_ += 1;
+  // job done --> increase num_of_h_updated_threads_
+  num_of_h_updated_threads_ += 1;
   
   // if all the threads have completed their job set the state to the next state
-  if (num_of_updated_threads_ == num_threads_) {
-    num_of_updated_threads_ = 0;
+  if (num_of_h_updated_threads_ >= num_threads_) {
+    assert(num_of_h_updated_threads_ == num_threads_);
+    //std::cout << num_of_h_updated_threads_ << std::endl;
+    num_of_h_updated_threads_ = 0;
     update_state_ = nextState;
   }
 }
@@ -176,7 +183,7 @@ void FDTD1D::UpdateFieldsCuncurrently(const int thread_index) {
   }
 }
 
-// similar to FDTD1D::UpdateFieldsCuncurrently except aster the second while
+// similar to FDTD1D::UpdateFieldsCuncurrently except after the second while
 // loop the fields are written to the output file.
 void FDTD1D::UpdateFieldsAndWriteToFileCuncurrently(const int thread_index) {
   UpdateState nextState = UpdateState::kUpdateH;
