@@ -5,7 +5,7 @@
 #ifndef FDTD_REALTYPE_H_
 #define FDTD_REALTYPE_H_
 
-// Defines the floating point data type used in the numerical computationas
+// Defines floating point data type used in the FDTD algorithm
 // and the integer types that describe indices for large arrays.
 // Since the size of the arrays may pass INT_MAX, int64_t is provided as the
 // int type.
