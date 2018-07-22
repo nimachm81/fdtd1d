@@ -18,6 +18,28 @@ $ make
 $ ./fdtd1d 
 ```
 
+To set the number of threads, change the following line in main.cc:
+
+``` C++
+  int num_threads(1);
+```
+
+To record the fields and visualize the output, 
+
+``` C++
+  fdtd.SetTheWriteToFileFlag(false);
+```
+
+and then compile and run. To visualize the fields run the python script 
+`plotOutput.py` from terminal:
+
+```
+$ python3 plotOutput.py
+```
+
+
+
+
 
 
 

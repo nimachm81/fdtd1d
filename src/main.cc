@@ -18,7 +18,7 @@ int main() {
   fdtd1d::RealNumber t_final(22.0);
   fdtd1d::RealNumber stabilityFactor(0.99); 
   // number of threads
-  int num_threads(4);
+  int num_threads(1);
   
   fdtd1d::FDTD1D fdtd;
   fdtd.SetXAxisRangeAndGridSpacing(x0, x1, dx);
