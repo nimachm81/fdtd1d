@@ -1,7 +1,6 @@
 // Copyright 2018 Nima Chamanara.  All Rights Reserved.
 // Use of this source code is governed by the GNU General Public License v3.0.
 
-//#define NDEBUG
 #include <assert.h>
 
 #include "fdtd1d.h"
