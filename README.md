@@ -24,10 +24,10 @@ To set the number of threads, change the following line in main.cc:
   int num_threads(1);
 ```
 
-To record the fields and visualize the output, 
+To record the fields and visualize the output modify main.cc as follows, 
 
 ``` C++
-  fdtd.SetTheWriteToFileFlag(false);
+  fdtd.SetTheWriteToFileFlag(true);
 ```
 
 and then compile and run. To visualize the fields run the python script 
@@ -37,6 +37,7 @@ and then compile and run. To visualize the fields run the python script
 $ python3 plotOutput.py
 ```
 
+in a system where python and matplotlib are installed.
 
 
 
