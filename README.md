@@ -11,10 +11,12 @@ This code demonstrates how to write a concurrent FDTD using modern C++ features.
 
 To compile and run:
 
-$ cd build
-$ cmake ..
-$ make
-$ ./fdtd1d
+$ cd build \n
+$ cmake .. \n
+$ make     \n
+$ ./fdtd1d \n
+
+
 
 
 
